@@ -46,7 +46,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://api.whatsapp.com/send?phone=+59177068973&text=Hola" target="_blank">
+                                            <a href="https://api.whatsapp.com/send?phone=+59177068973&text=Hola, me interesa adquirir su servicio de sistema. Me dan mas información?" target="_blank">
                                                 <i class="fa fa-phone"></i> +591 77068973
                                             </a>
                                         </li>
@@ -120,7 +120,7 @@
                     <div class="info_text text-center">
                         <h3>Para cualquier información llámanos</h3>
                         <p>Forjando Software con la Firmeza de la Calidad</p>
-                        <a class="boxed-btn3" href="https://api.whatsapp.com/send?phone=+59177068973&text=Hola" target="_blank">
+                        <a class="boxed-btn3" href="https://api.whatsapp.com/send?phone=+59177068973&text=Hola, me interesa adquirir su servicio de sistema. Me dan mas información?" target="_blank">
                             <i class="fa fa-phone"></i> +591 77068973
                         </a>
                     </div>

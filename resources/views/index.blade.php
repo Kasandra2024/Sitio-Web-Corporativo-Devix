@@ -268,7 +268,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="more_close_btn text-center">
-                            <a href="{{url('https://github.com/mamanirodriguezkasandra-crypto')}}" class="boxed-btn3-line">More Projects</a>
+                            <a href="{{url('https://github.com/kasandra2024')}}" class="boxed-btn3-line">More Projects</a>
                         </div>
                     </div>
                 </div>

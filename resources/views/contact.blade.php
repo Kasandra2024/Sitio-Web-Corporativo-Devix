@@ -1,4 +1,5 @@
 @extends('app')
+
 @section('content')
     <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_1">
@@ -17,11 +18,28 @@
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
         <div class="container">
+            
+            <!-- Mensaje de éxito de Laravel -->
             @if (session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             @endif
+
+            <!-- Mensajes de error de validación -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="d-none d-sm-block mb-5 pb-4">
                 <div id="map"></div>
             </div>
@@ -31,41 +49,33 @@
                     <h2 class="contact-title">Contáctanos</h2>
                 </div>
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="{{ route('sendEmail') }}" method="POST"
-                        id="send">
+                    <!-- Formulario con envío tradicional por POST -->
+                    <form class="form-contact" action="{{ route('sendEmail') }}" method="POST" id="contactForm" onsubmit="this.submit();">
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="mensaje" id="mensaje" cols="30" rows="9"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Name"></textarea>
+                                    <textarea class="form-control w-100 @error('mensaje') is-invalid @enderror" name="mensaje" id="mensaje" cols="30" rows="9" placeholder="Enter Message" required>{{ old('mensaje') }}</textarea>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" name="name" id="name" type="text"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
-                                        placeholder="Enter your name">
+                                    <input class="form-control @error('name') is-invalid @enderror" name="name" id="name" type="text" placeholder="Enter your name" value="{{ old('name') }}" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" name="destinatario" id="email" type="email"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
-                                        placeholder="Email">
+                                    <input class="form-control @error('destinatario') is-invalid @enderror" name="destinatario" id="destinatario" type="email" placeholder="Enter email address" value="{{ old('destinatario') }}" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="subject" id="subject" type="text"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                        placeholder="Enter Subject">
+                                    <input class="form-control @error('subject') is-invalid @enderror" name="subject" id="subject" type="text" placeholder="Enter Subject" value="{{ old('subject') }}" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn"
-                                id="send">Send</button>
+                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
                         </div>
                     </form>
                 </div>
